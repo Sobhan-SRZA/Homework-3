@@ -1,0 +1,41 @@
+.container {
+ background-color: $container-bg;
+
+ .container-header {
+  background-color: $header-bg;
+  color: $header-text;
+  width: 100%;
+
+  .container-header__nav {
+   display: flex;
+   flex-direction: row;
+   text-align: center;
+   justify-content: space-between;
+   align-items: center;
+  }
+ }
+
+ .container-body {
+  .container-body__getstart {
+   border: 5px solid rgb(236, 205, 167);
+   border-radius: 40px;
+   background-color: rgb(216, 180, 136);
+   font-size: 18px;
+   padding: 5px 0 20px 0;
+   margin-left:  200px;
+   margin-right:  200px;
+
+   @include forum;
+  }
+ }
+
+ .container-footer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $footer-bg;
+  margin-top: 20px;
+ }
+}

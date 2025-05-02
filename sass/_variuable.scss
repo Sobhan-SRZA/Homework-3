@@ -1,0 +1,179 @@
+// colors variuables
+$body-bg: #000000;
+$main-bg: #000;
+$container-bg: #804747;
+$container-sections-bg: #c46b6b;
+$header-bg: #fff;
+$header-text: #fff;
+$forum-input-bg: #f0f8ff;
+$section-bg:#602222;
+$footer-bg:#ff2;
+
+// mixin variuables
+@mixin forum {
+    .forum-singup {
+        direction: ltr;
+        text-align: center;
+        justify-items: center;
+
+        .input-row {
+            display: flex;
+            margin: 0 0 8px 0;
+
+            input {
+                background-color: $forum-input-bg;
+                border: 5px solid $forum-input-bg;
+                border-radius: 3px;
+                inline-size: 190px;
+                padding: 2px;
+                height: auto;
+                direction: rtl;
+                margin: 0 0 0 3px;
+                outline: none;
+            }
+
+            label {
+                border: 5px solid $forum-input-bg;
+                background-color: $forum-input-bg;
+                text-align: center;
+                font-weight: 600;
+                inline-size: 100px;
+            }
+
+            #first-input {
+                border-radius: 3px 10px 3px 3px;
+            }
+
+            #first-label {
+                border-radius: 10px 3px 3px 3px;
+            }
+
+            .middle {
+                border-radius: 3px;
+            }
+
+            #last-input {
+                border-radius: 3px 3px 13px 13px;
+                font-size: 18px;
+                color: rgb(94, 79, 62);
+                inline-size: 300px;
+                box-shadow: 3px 8px 4px #888888;
+                height: auto;
+                font-weight: 900;
+                margin: 0 0 10px 0;
+                transition: all .2s ease-in-out;
+
+                &:hover {
+                    background-color: rgb(211, 218, 224);
+                    border: 5px solid rgb(211, 218, 224);
+                    box-shadow: none;
+                }
+
+                &:active {
+                    background-color: rgb(255, 255, 255);
+                    border: 5px solid rgb(255, 255, 255);
+                    box-shadow: none;
+                }
+            }
+        }
+
+        a {
+            display: block;
+            color: brown;
+            text-decoration: none;
+            direction: rtl;
+            transition: all .2s ease-in-out;
+
+            &:hover {
+                color: #bbb;
+            }
+
+            &:active {
+                color: #fff;
+            }
+        }
+    }
+
+    .forum-singup {
+        direction: ltr;
+        text-align: center;
+        justify-items: center;
+    
+        .input-row {
+         display: flex;
+         margin: 0 0 8px 0;
+    
+         input {
+          background-color: $forum-input-bg;
+          border: 5px solid $forum-input-bg;
+          border-radius: 3px;
+          inline-size: 190px;
+          padding: 2px;
+          height: auto;
+          direction: rtl;
+          margin: 0 0 0 3px;
+          outline: none;
+         }
+    
+         label {
+          border: 5px solid $forum-input-bg;
+          background-color: $forum-input-bg;
+          text-align: center;
+          font-weight: 600;
+          inline-size: 100px;
+         }
+    
+         #first-input {
+          border-radius: 3px 10px 3px 3px;
+         }
+    
+         #first-label {
+          border-radius: 10px 3px 3px 3px;
+         }
+    
+         .middle {
+          border-radius: 3px;
+         }
+    
+         #last-input {
+          border-radius: 3px 3px 13px 13px;
+          font-size: 18px;
+          color: rgb(94, 79, 62);
+          inline-size: 300px;
+          box-shadow: 3px 8px 4px #888888;
+          height: auto;
+          font-weight: 900;
+          margin: 0 0 10px 0;
+          transition: all .2s ease-in-out;
+    
+          &:hover {
+           background-color: rgb(211, 218, 224);
+           border: 5px solid rgb(211, 218, 224);
+           box-shadow: none;
+          }
+    
+          &:active {
+           background-color: rgb(255, 255, 255);
+           border: 5px solid rgb(255, 255, 255);
+           box-shadow: none;
+          }
+         }
+        }
+    
+        a {
+         display: block;
+         color: brown;
+         text-decoration: none;
+         direction: rtl;
+         transition: all .2s ease-in-out;
+    
+         &:hover {
+          color: #bbb;
+         }
+    
+         &:active {
+          color: #fff;
+         }
+        }
+       }
+}

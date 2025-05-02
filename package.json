@@ -1,0 +1,20 @@
+{
+  "name": "lesson-12-homework",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "watch": "node-sass sass/main.scss style.css --watch",
+    "compile": "node-sass sass/main.scss style.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "node-sass": "^9.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
+  }
+}
