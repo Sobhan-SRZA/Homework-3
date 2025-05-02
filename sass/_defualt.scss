@@ -3,59 +3,59 @@
 *,
 *::after,
 *::before {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 // body style
 body {
- font-family: Arial, Helvetica, sans-serif;
- background-color: $body-bg;
- text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: $body-bg;
+    text-align: center;
 }
 
 // custom class and id style
 .pointer {
- cursor: pointer;
+    cursor: pointer;
 }
 
 #per {
- direction: rtl;
+    direction: rtl;
 }
 
 .icon {
- width: 50px;
- height: 50px;
+    width: 50px;
+    height: 50px;
 }
 
 // animations
 section {
- animation: loading 2s ease-in-out;
+    animation: loading 2s ease-in-out;
 }
 
 div {
- animation: loading 2s ease-in-out;
+    animation: loading 2s ease-in-out;
 }
 
 @keyframes loading {
- 0% {
-  transform: scale(0.5);
-  opacity: 0;
-  margin-top: 30px;
- }
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+        margin-top: 30px;
+    }
 
- 50% {
-  transform: scale(1);
-  opacity: 1;
- }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
 
- 80% {
-  opacity: .9;
- }
+    80% {
+        opacity: .9;
+    }
 
 
- 100% {
-  transform: translateX(0);
- }
+    100% {
+        transform: translateX(0);
+    }
 }

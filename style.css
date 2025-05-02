@@ -3,185 +3,223 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #000000;
-  text-align: center; }
+  text-align: center;
+}
 
 .pointer {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 #per {
-  direction: rtl; }
+  direction: rtl;
+}
 
 .icon {
   width: 50px;
-  height: 50px; }
+  height: 50px;
+}
 
 section {
-  animation: loading 2s ease-in-out; }
+  animation: loading 2s ease-in-out;
+}
 
 div {
-  animation: loading 2s ease-in-out; }
+  animation: loading 2s ease-in-out;
+}
 
 @keyframes loading {
   0% {
     transform: scale(0.5);
     opacity: 0;
-    margin-top: 30px; }
+    margin-top: 30px;
+  }
   50% {
     transform: scale(1);
-    opacity: 1; }
+    opacity: 1;
+  }
   80% {
-    opacity: .9; }
+    opacity: 0.9;
+  }
   100% {
-    transform: translateX(0); } }
-
+    transform: translateX(0);
+  }
+}
 .container {
-  background-color: #804747; }
-  .container .container-header {
-    background-color: #fff;
-    color: #fff;
-    width: 100%; }
-    .container .container-header .container-header__nav {
-      display: flex;
-      flex-direction: row;
-      text-align: center;
-      justify-content: space-between;
-      align-items: center; }
-  .container .container-body .container-body__getstart {
-    border: 5px solid #eccda7;
-    border-radius: 40px;
-    background-color: #d8b488;
-    font-size: 18px;
-    padding: 5px 0 20px 0;
-    margin-left: 200px;
-    margin-right: 200px; }
-    .container .container-body .container-body__getstart .forum-singup {
-      direction: ltr;
-      text-align: center;
-      justify-items: center; }
-      .container .container-body .container-body__getstart .forum-singup .input-row {
-        display: flex;
-        margin: 0 0 8px 0; }
-        .container .container-body .container-body__getstart .forum-singup .input-row input {
-          background-color: #f0f8ff;
-          border: 5px solid #f0f8ff;
-          border-radius: 3px;
-          inline-size: 190px;
-          padding: 2px;
-          height: auto;
-          direction: rtl;
-          margin: 0 0 0 3px;
-          outline: none; }
-        .container .container-body .container-body__getstart .forum-singup .input-row label {
-          border: 5px solid #f0f8ff;
-          background-color: #f0f8ff;
-          text-align: center;
-          font-weight: 600;
-          inline-size: 100px; }
-        .container .container-body .container-body__getstart .forum-singup .input-row #first-input {
-          border-radius: 3px 10px 3px 3px; }
-        .container .container-body .container-body__getstart .forum-singup .input-row #first-label {
-          border-radius: 10px 3px 3px 3px; }
-        .container .container-body .container-body__getstart .forum-singup .input-row .middle {
-          border-radius: 3px; }
-        .container .container-body .container-body__getstart .forum-singup .input-row #last-input {
-          border-radius: 3px 3px 13px 13px;
-          font-size: 18px;
-          color: #5e4f3e;
-          inline-size: 300px;
-          box-shadow: 3px 8px 4px #888888;
-          height: auto;
-          font-weight: 900;
-          margin: 0 0 10px 0;
-          transition: all .2s ease-in-out; }
-          .container .container-body .container-body__getstart .forum-singup .input-row #last-input:hover {
-            background-color: #d3dae0;
-            border: 5px solid #d3dae0;
-            box-shadow: none; }
-          .container .container-body .container-body__getstart .forum-singup .input-row #last-input:active {
-            background-color: white;
-            border: 5px solid white;
-            box-shadow: none; }
-      .container .container-body .container-body__getstart .forum-singup a {
-        display: block;
-        color: brown;
-        text-decoration: none;
-        direction: rtl;
-        transition: all .2s ease-in-out; }
-        .container .container-body .container-body__getstart .forum-singup a:hover {
-          color: #bbb; }
-        .container .container-body .container-body__getstart .forum-singup a:active {
-          color: #fff; }
-    .container .container-body .container-body__getstart .forum-singup {
-      direction: ltr;
-      text-align: center;
-      justify-items: center; }
-      .container .container-body .container-body__getstart .forum-singup .input-row {
-        display: flex;
-        margin: 0 0 8px 0; }
-        .container .container-body .container-body__getstart .forum-singup .input-row input {
-          background-color: #f0f8ff;
-          border: 5px solid #f0f8ff;
-          border-radius: 3px;
-          inline-size: 190px;
-          padding: 2px;
-          height: auto;
-          direction: rtl;
-          margin: 0 0 0 3px;
-          outline: none; }
-        .container .container-body .container-body__getstart .forum-singup .input-row label {
-          border: 5px solid #f0f8ff;
-          background-color: #f0f8ff;
-          text-align: center;
-          font-weight: 600;
-          inline-size: 100px; }
-        .container .container-body .container-body__getstart .forum-singup .input-row #first-input {
-          border-radius: 3px 10px 3px 3px; }
-        .container .container-body .container-body__getstart .forum-singup .input-row #first-label {
-          border-radius: 10px 3px 3px 3px; }
-        .container .container-body .container-body__getstart .forum-singup .input-row .middle {
-          border-radius: 3px; }
-        .container .container-body .container-body__getstart .forum-singup .input-row #last-input {
-          border-radius: 3px 3px 13px 13px;
-          font-size: 18px;
-          color: #5e4f3e;
-          inline-size: 300px;
-          box-shadow: 3px 8px 4px #888888;
-          height: auto;
-          font-weight: 900;
-          margin: 0 0 10px 0;
-          transition: all .2s ease-in-out; }
-          .container .container-body .container-body__getstart .forum-singup .input-row #last-input:hover {
-            background-color: #d3dae0;
-            border: 5px solid #d3dae0;
-            box-shadow: none; }
-          .container .container-body .container-body__getstart .forum-singup .input-row #last-input:active {
-            background-color: white;
-            border: 5px solid white;
-            box-shadow: none; }
-      .container .container-body .container-body__getstart .forum-singup a {
-        display: block;
-        color: brown;
-        text-decoration: none;
-        direction: rtl;
-        transition: all .2s ease-in-out; }
-        .container .container-body .container-body__getstart .forum-singup a:hover {
-          color: #bbb; }
-        .container .container-body .container-body__getstart .forum-singup a:active {
-          color: #fff; }
-  .container .container-footer {
+  background-color: #804747;
+}
+.container .container-header {
+  background-color: #fff;
+  color: #fff;
+  width: 100%;
+}
+.container .container-header .container-header__nav {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .container-header .container-header__nav a {
+  text-decoration-line: none;
+}
+.container .container-body .container-body__getstart {
+  border: 5px solid rgb(236, 205, 167);
+  border-radius: 40px;
+  background-color: rgb(216, 180, 136);
+  font-size: 18px;
+  padding: 5px 0 20px 0;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+.container .container-body .container-body__getstart .forum-singup {
+  direction: ltr;
+  text-align: center;
+  justify-items: center;
+}
+.container .container-body .container-body__getstart .forum-singup .input-row {
+  display: flex;
+  margin: 0 0 8px 0;
+}
+.container .container-body .container-body__getstart .forum-singup .input-row input {
+  background-color: #f0f8ff;
+  border: 5px solid #f0f8ff;
+  border-radius: 3px;
+  inline-size: 190px;
+  padding: 2px;
+  height: auto;
+  direction: rtl;
+  margin: 0 0 0 3px;
+  outline: none;
+}
+.container .container-body .container-body__getstart .forum-singup .input-row label {
+  border: 5px solid #f0f8ff;
+  background-color: #f0f8ff;
+  text-align: center;
+  font-weight: 600;
+  inline-size: 100px;
+}
+.container .container-body .container-body__getstart .forum-singup .input-row #first-input {
+  border-radius: 3px 10px 3px 3px;
+}
+.container .container-body .container-body__getstart .forum-singup .input-row #first-label {
+  border-radius: 10px 3px 3px 3px;
+}
+.container .container-body .container-body__getstart .forum-singup .input-row .middle {
+  border-radius: 3px;
+}
+.container .container-body .container-body__getstart .forum-singup .input-row #last-input {
+  border-radius: 3px 3px 13px 13px;
+  font-size: 18px;
+  color: rgb(94, 79, 62);
+  inline-size: 300px;
+  box-shadow: 3px 8px 4px #888888;
+  height: auto;
+  font-weight: 900;
+  margin: 0 0 10px 0;
+  transition: all 0.2s ease-in-out;
+}
+.container .container-body .container-body__getstart .forum-singup .input-row #last-input:hover {
+  background-color: rgb(211, 218, 224);
+  border: 5px solid rgb(211, 218, 224);
+  box-shadow: none;
+}
+.container .container-body .container-body__getstart .forum-singup .input-row #last-input:active {
+  background-color: rgb(255, 255, 255);
+  border: 5px solid rgb(255, 255, 255);
+  box-shadow: none;
+}
+.container .container-body .container-body__getstart .forum-singup a {
+  display: block;
+  color: brown;
+  text-decoration: none;
+  direction: rtl;
+  transition: all 0.2s ease-in-out;
+}
+.container .container-body .container-body__getstart .forum-singup a:hover {
+  color: #bbb;
+}
+.container .container-body .container-body__getstart .forum-singup a:active {
+  color: #fff;
+}
+.container .container-footer {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #ff2;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .container-footer .copyright {
+  flex-direction: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .container-footer .copyright .footer-icon,
+.container .container-footer .copyright p {
+  margin-bottom: 10px;
+}
+.container .container-footer .links {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+.container .container-footer .links a {
+  text-decoration-line: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  .container-header__nav {
+    flex-direction: column;
+  }
+  .nav-list {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ff2;
-    margin-top: 20px; }
-
+    gap: 0.5rem;
+  }
+  .getstart {
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  .products__grid {
+    grid-template-columns: 1fr;
+  }
+  .container-footer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .products__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1025px) {
+  .products__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 section {
   background-color: #602222;
-  margin-top: 20px; }
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -6,8 +6,17 @@ $container-sections-bg: #c46b6b;
 $header-bg: #fff;
 $header-text: #fff;
 $forum-input-bg: #f0f8ff;
-$section-bg:#602222;
-$footer-bg:#ff2;
+$section-bg: #602222;
+$footer-bg: #ff2;
+$getstart-bg: rgb(216, 180, 136);
+$getstart-border: rgb(236, 205, 167);
+$forum-last-input-text-shadow: #888888;
+$forum-last-input-text: rgb(94, 79, 62);
+$forum-last-input-hover-bg: rgb(211, 218, 224);
+$forum-last-input-active-bg: rgb(255, 255, 255);
+$forum-a-color-active: #fff;
+$forum-a-color-hover: #bbb;
+$forum-a-color: brown;
 
 // mixin variuables
 @mixin forum {
@@ -55,23 +64,23 @@ $footer-bg:#ff2;
             #last-input {
                 border-radius: 3px 3px 13px 13px;
                 font-size: 18px;
-                color: rgb(94, 79, 62);
+                color: $forum-last-input-text;
                 inline-size: 300px;
-                box-shadow: 3px 8px 4px #888888;
+                box-shadow: 3px 8px 4px $forum-last-input-text-shadow;
                 height: auto;
                 font-weight: 900;
                 margin: 0 0 10px 0;
                 transition: all .2s ease-in-out;
 
                 &:hover {
-                    background-color: rgb(211, 218, 224);
-                    border: 5px solid rgb(211, 218, 224);
+                    background-color: $forum-last-input-hover-bg ;
+                    border: 5px solid $forum-last-input-hover-bg ;
                     box-shadow: none;
                 }
 
                 &:active {
-                    background-color: rgb(255, 255, 255);
-                    border: 5px solid rgb(255, 255, 255);
+                    background-color: $forum-last-input-active-bg;
+                    border: 5px solid $forum-last-input-active-bg;
                     box-shadow: none;
                 }
             }
@@ -79,101 +88,18 @@ $footer-bg:#ff2;
 
         a {
             display: block;
-            color: brown;
+            color: $forum-a-color;
             text-decoration: none;
             direction: rtl;
             transition: all .2s ease-in-out;
 
             &:hover {
-                color: #bbb;
+                color: $forum-a-color-hover;
             }
 
             &:active {
-                color: #fff;
+                color: $forum-a-color-active;
             }
         }
     }
-
-    .forum-singup {
-        direction: ltr;
-        text-align: center;
-        justify-items: center;
-    
-        .input-row {
-         display: flex;
-         margin: 0 0 8px 0;
-    
-         input {
-          background-color: $forum-input-bg;
-          border: 5px solid $forum-input-bg;
-          border-radius: 3px;
-          inline-size: 190px;
-          padding: 2px;
-          height: auto;
-          direction: rtl;
-          margin: 0 0 0 3px;
-          outline: none;
-         }
-    
-         label {
-          border: 5px solid $forum-input-bg;
-          background-color: $forum-input-bg;
-          text-align: center;
-          font-weight: 600;
-          inline-size: 100px;
-         }
-    
-         #first-input {
-          border-radius: 3px 10px 3px 3px;
-         }
-    
-         #first-label {
-          border-radius: 10px 3px 3px 3px;
-         }
-    
-         .middle {
-          border-radius: 3px;
-         }
-    
-         #last-input {
-          border-radius: 3px 3px 13px 13px;
-          font-size: 18px;
-          color: rgb(94, 79, 62);
-          inline-size: 300px;
-          box-shadow: 3px 8px 4px #888888;
-          height: auto;
-          font-weight: 900;
-          margin: 0 0 10px 0;
-          transition: all .2s ease-in-out;
-    
-          &:hover {
-           background-color: rgb(211, 218, 224);
-           border: 5px solid rgb(211, 218, 224);
-           box-shadow: none;
-          }
-    
-          &:active {
-           background-color: rgb(255, 255, 255);
-           border: 5px solid rgb(255, 255, 255);
-           box-shadow: none;
-          }
-         }
-        }
-    
-        a {
-         display: block;
-         color: brown;
-         text-decoration: none;
-         direction: rtl;
-         transition: all .2s ease-in-out;
-    
-         &:hover {
-          color: #bbb;
-         }
-    
-         &:active {
-          color: #fff;
-         }
-        }
-       }
 }

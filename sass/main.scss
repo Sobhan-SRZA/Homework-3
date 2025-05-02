@@ -1,9 +1,10 @@
-@import "_defualt.scss";
 @import "_variuable.scss";
+@import "_defualt.scss";
 @import "_container.scss";
 @import "_responsive.scss";
 
 section {
- background-color: $section-bg;
- margin-top: 20px;
+    background: $section-bg;
+    margin-top: 20px;
+    padding: 1rem;
 }

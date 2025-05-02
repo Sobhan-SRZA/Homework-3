@@ -1,41 +1,74 @@
 .container {
- background-color: $container-bg;
+    background-color: $container-bg;
 
- .container-header {
-  background-color: $header-bg;
-  color: $header-text;
-  width: 100%;
+    .container-header {
+        background-color: $header-bg;
+        color: $header-text;
+        width: 100%;
 
-  .container-header__nav {
-   display: flex;
-   flex-direction: row;
-   text-align: center;
-   justify-content: space-between;
-   align-items: center;
-  }
- }
+        .container-header__nav {
+            padding: 15px;
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            justify-content: space-between;
+            align-items: center;
 
- .container-body {
-  .container-body__getstart {
-   border: 5px solid rgb(236, 205, 167);
-   border-radius: 40px;
-   background-color: rgb(216, 180, 136);
-   font-size: 18px;
-   padding: 5px 0 20px 0;
-   margin-left:  200px;
-   margin-right:  200px;
+            a {
+                text-decoration-line: none;
+            }
+        }
+    }
 
-   @include forum;
-  }
- }
+    .container-body {
+        .container-body__getstart {
+            border: 5px solid $getstart-border;
+            border-radius: 40px;
+            background-color: $getstart-bg ;
+            font-size: 18px;
+            padding: 5px 0 20px 0;
+            margin-left: 200px;
+            margin-right: 200px;
 
- .container-footer {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: space-between;
-  align-items: center;
-  background-color: $footer-bg;
-  margin-top: 20px;
- }
+            @include forum;
+        }
+    }
+
+    .container-footer {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: $footer-bg;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        justify-content: space-between;
+        align-items: center;
+
+        .copyright {
+            flex-direction: center;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: space-between;
+            align-items: center;
+
+            .footer-icon,
+            p {
+                margin-bottom: 10px;
+            }
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+
+            a {
+                text-decoration-line: none;
+            }
+        }
+    }
 }
