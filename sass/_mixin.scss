@@ -1,0 +1,176 @@
+@import "variuable";
+
+@mixin forum {
+    .forum-singup {
+        direction: ltr;
+        text-align: center;
+        justify-items: center;
+
+        .input-row {
+            display: flex;
+            margin: 0 0 8px 0;
+
+            input {
+                background-color: $forum-input-bg;
+                border: 5px solid $forum-input-bg;
+                border-radius: 3px;
+                inline-size: 190px;
+                padding: 2px;
+                height: auto;
+                direction: rtl;
+                margin: 0 0 0 3px;
+                outline: none;
+            }
+
+            label {
+                border: 5px solid $forum-input-bg;
+                background-color: $forum-input-bg;
+                text-align: center;
+                font-weight: 600;
+                inline-size: 100px;
+            }
+
+            #first-input {
+                border-radius: 3px 10px 3px 3px;
+            }
+
+            #first-label {
+                border-radius: 10px 3px 3px 3px;
+            }
+
+            .single {
+                border-radius: 10px 3px 3px 10px;
+            }
+
+            #single-input {
+                border-radius: 3px 10px 10px 3px;
+            }
+
+            .middle {
+                border-radius: 3px;
+            }
+
+            #last-input {
+                border-radius: 3px 3px 13px 13px;
+                font-size: 18px;
+                color: $forum-last-input-text;
+                inline-size: 300px;
+                box-shadow: 3px 8px 4px $forum-last-input-text-shadow;
+                height: auto;
+                font-weight: 900;
+                margin: 0 0 10px 0;
+                @include default-transition;
+
+                &:hover {
+                    background-color: $forum-last-input-hover-bg ;
+                    border: 5px solid $forum-last-input-hover-bg ;
+                    box-shadow: none;
+                }
+
+                &:active {
+                    background-color: $forum-last-input-active-bg;
+                    border: 5px solid $forum-last-input-active-bg;
+                    box-shadow: none;
+                }
+            }
+        }
+
+        a {
+            display: block;
+            color: $forum-a-color;
+            text-decoration: none;
+            direction: rtl;
+            @include default-transition;
+
+            &:hover {
+                transform: none;
+                color: $forum-a-color-hover;
+            }
+
+            &:active {
+                color: $forum-a-color-active;
+            }
+        }
+    }
+}
+
+@mixin products {
+    .products {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        gap: .9rem;
+        flex-wrap: wrap;
+
+        .products__item {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background-color: $product-bg;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 1px 2px #000000;
+            @include default-transition;
+
+            &:hover {
+                transform: scale(1.1);
+                box-shadow: none;
+            }
+
+            img {
+                @include default-transition;
+                border-radius: 10px;
+                height: 10rem;
+                width: 10rem;
+
+                &:hover {
+                    box-shadow: 0 1px 2px #ffffff;
+                }
+            }
+
+            button {
+                @include default-transition;
+                border: none;
+                color: $p-color;
+                background-color: $product-btn-bg;
+                border-radius: 10px;
+                height: 2rem;
+                width: 4rem;
+
+                &:hover {
+                    box-shadow: 0 0 3px #000000;
+                }
+
+                &:active {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}
+
+@mixin flex-responsive {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+}
+
+@mixin grid-responsive {
+    grid: 10px;
+    display: grid;
+    grid-template:
+        "logo logo"
+        "links-1 links-2";
+    text-align: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+@mixin default-transition {
+    transition: all .5s ease-in-out;
+}

@@ -1,10 +1,5 @@
-@import "_variuable.scss";
-@import "_defualt.scss";
-@import "_container.scss";
-@import "_responsive.scss";
-
-section {
-    background: $section-bg;
-    margin-top: 20px;
-    padding: 1rem;
-}
+@import "variuable";
+@import "mixin";
+@import "defualt";
+@import "container";
+@import "responsive";

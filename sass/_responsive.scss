@@ -1,5 +1,53 @@
-@media (max-width: 768px) {}
+@import "mixin";
 
-@media (min-width: 769px) and (max-width: 1024px) {}
+@media (max-width: 600px) {
 
-@media (min-width: 1025px) {}
+ .container {
+  .container-header {
+   .container-header__nav {
+    @include flex-responsive;
+   }
+  }
+
+  .container-footer {
+   @include grid-responsive;
+
+   .copyright {
+    grid-area: logo;
+   }
+
+   .links-1 {
+    grid-area: links-1;
+   }
+
+   .links-2 {
+    grid-area: links-2;
+   }
+  }
+ }
+
+ .products {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+ }
+}
+
+@media (max-width: 500px) {
+
+ .container {
+  .container-body {
+   .container-body__getstart {
+    .forum-singup {
+     display: flex;
+     flex-wrap: wrap;
+
+     .forum {
+      display: flex;
+      flex-wrap: wrap;
+     }
+    }
+   }
+  }
+ }
+}
