@@ -1,7 +1,6 @@
 @import "mixin";
 
 @media (max-width: 600px) {
-
  .container {
   .container-header {
    .container-header__nav {
@@ -30,24 +29,5 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
- }
-}
-
-@media (max-width: 500px) {
-
- .container {
-  .container-body {
-   .container-body__getstart {
-    .forum-singup {
-     display: flex;
-     flex-wrap: wrap;
-
-     .forum {
-      display: flex;
-      flex-wrap: wrap;
-     }
-    }
-   }
-  }
  }
 }

@@ -38,6 +38,7 @@ section {
     padding: 1.5rem;
     border-radius: 1rem;
     box-shadow: 0 5px 10px .01px #000;
+    animation: loading 2s ease-in-out;
     @include default-transition;
 
     &:hover {
@@ -69,19 +70,14 @@ a {
 }
 
 // animations
-section {
-    animation: loading 2s ease-in-out;
-}
-
-div {
-    animation: loading 2s ease-in-out;
-}
-
 @keyframes loading {
     0% {
-        transform: scale(0.5);
+        transform: scale(0);
         opacity: 0;
-        margin-top: 30px;
+    }
+
+    30%{
+        transform: scale(1.1);
     }
 
     50% {

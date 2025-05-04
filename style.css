@@ -33,6 +33,7 @@ section {
   padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0 5px 10px 0.01px #000;
+  animation: loading 2s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 section:hover {
@@ -60,19 +61,13 @@ a:hover {
   height: 50px;
 }
 
-section {
-  animation: loading 2s ease-in-out;
-}
-
-div {
-  animation: loading 2s ease-in-out;
-}
-
 @keyframes loading {
   0% {
-    transform: scale(0.5);
+    transform: scale(0);
     opacity: 0;
-    margin-top: 30px;
+  }
+  30% {
+    transform: scale(1.1);
   }
   50% {
     transform: scale(1);
@@ -112,19 +107,41 @@ div {
   padding: 2rem 5rem;
 }
 .container .container-body .container-body__getstart .forum-singup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   direction: ltr;
-  text-align: center;
-  justify-items: center;
+  align-items: center;
 }
 .container .container-body .container-body__getstart .forum-singup .input-row {
   display: flex;
-  margin: 0 0 8px 0;
+  flex-direction: row;
+  margin-bottom: 8px;
+  align-items: center;
+}
+.container .container-body .container-body__getstart .forum-singup .input-row .error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  position: absolute;
+  bottom: -1.25rem;
+  right: 0;
+  display: none;
+}
+.container .container-body .container-body__getstart .forum-singup .input-row .input-error {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+}
+.container .container-body .container-body__getstart .forum-singup .input-row .success-message {
+  color: #28a745;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
 }
 .container .container-body .container-body__getstart .forum-singup .input-row input {
   background-color: #f0f8ff;
   border: 5px solid #f0f8ff;
   border-radius: 3px;
-  inline-size: 190px;
+  max-width: 190px;
+  width: 100%;
   padding: 2px;
   height: auto;
   direction: rtl;
@@ -145,6 +162,7 @@ div {
   border-radius: 10px 3px 3px 3px;
 }
 .container .container-body .container-body__getstart .forum-singup .input-row .single {
+  margin-top: 10px;
   border-radius: 10px 3px 3px 10px;
 }
 .container .container-body .container-body__getstart .forum-singup .input-row #single-input {
@@ -157,11 +175,9 @@ div {
   border-radius: 3px 3px 13px 13px;
   font-size: 18px;
   color: rgb(94, 79, 62);
-  inline-size: 300px;
   box-shadow: 3px 8px 4px #888888;
-  height: auto;
   font-weight: 900;
-  margin: 0 0 10px 0;
+  max-width: 300px;
   transition: all 0.5s ease-in-out;
 }
 .container .container-body .container-body__getstart .forum-singup .input-row #last-input:hover {
@@ -175,7 +191,6 @@ div {
   box-shadow: none;
 }
 .container .container-body .container-body__getstart .forum-singup a {
-  display: block;
   color: rgb(217, 244, 255);
   text-decoration: none;
   direction: rtl;
@@ -213,6 +228,9 @@ div {
 .container .container-body .container-body__products .products .products__item:hover {
   transform: scale(1.1);
   box-shadow: none;
+}
+.container .container-body .container-body__products .products .products__item .products__item--price {
+  color: #baddff;
 }
 .container .container-body .container-body__products .products .products__item img {
   transition: all 0.5s ease-in-out;
@@ -306,16 +324,6 @@ div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-  }
-}
-@media (max-width: 500px) {
-  .container .container-body .container-body__getstart .forum-singup {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .container .container-body .container-body__getstart .forum-singup .forum {
-    display: flex;
-    flex-wrap: wrap;
   }
 }
 

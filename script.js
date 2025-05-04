@@ -24,23 +24,72 @@ const products = [
        }
 ];
 
+const users = [
+       {
+              name: "سبحان",
+              email: "sobhan@gmail.com",
+              password: "123456789"
+       }
+];
+
+let currentCaptcha = undefined;
+let loggedInUser = null;
+
 class Main {
        constructor() {
               this.cart = [];
-              this.loggedInUser = null;
-              this.currentCaptcha = null;
-              this.forumeAction = document.querySelector(".signup-action");
-              this.forum = document.getElementById("forum");
+              currentCaptcha = this.genCaptcha();
               this.renderForm();
-              this.attachEvents();
               this.renderProducts();
+              this.attachEvents();
+              this.addLiveValidation();
+       }
+
+       addLiveValidation() {
+              document.addEventListener('input', (e) => {
+                     const input = e.target;
+                     if (input.classList.contains('name')) {
+                            this.validateField(input, 'text');
+                     }
+
+                     if (input.classList.contains('email')) {
+                            this.validateField(input, 'email');
+                     }
+
+                     if (input.classList.contains('password')) {
+                            this.validateField(input, 'password');
+                     }
+
+                     if (input.classList.contains('captcha')) {
+                            this.validateField(input, 'captcha');
+                     }
+              });
        }
 
        attachEvents() {
-              this.forumeAction.addEventListener("click", () => this.toggleForm());
+              document.querySelector(".signup-action")?.addEventListener("click", (e) => {
+                     this.toggleForm(e.target.id !== "signup")
+              });
+
+              document.querySelector('.products').addEventListener('click', (e) => {
+                     if (e.target.classList.contains('products__item--button')) {
+                            if (!loggedInUser) {
+                                   alert('لطفا ابتدا وارد حساب کاربری خود شوید!');
+                                   return;
+                            }
+
+                            const productName = e.target.getAttribute('data-product');
+                            const product = products.find(p => p.name === productName);
+                            console.log(productName);
+                            console.log(product);
+                            this.addToCart(product);
+                            return;
+                     }
+              });
        }
 
        renderForm(isLogin = false) {
+              currentCaptcha = this.genCaptcha();
               this.create_forum_code = `                     
                      <div class="input-row">
                             <label for="email" class="first" id="first-label">ایمیل</label>
@@ -57,7 +106,7 @@ class Main {
                      </div>
 
                      <div class="input-row">
-                            <label for="captcha" class="single">راستی آزمایی | ${this.genCaptcha()}</label>
+                            <label for="captcha" class="single" id="captcha">${currentCaptcha}</label>
                             <input type="number" class="single captcha pointer" id="single-input" placeholder="لطفا کد کپچا رو وارد کنید." required>
                      </div>
               `;
@@ -83,24 +132,40 @@ class Main {
                      </div>
 
                      <div class="input-row">
-                            <label for="captcha" class="single">راستی آزمایی | ${this.genCaptcha()}</label>
+                            <label for="captcha" class="single">${currentCaptcha}</label>
                             <input type="number" class="single captcha pointer" id="single-input" placeholder="لطفا کد کپچا رو وارد کنید." required>
                      </div>
               `;
+
+              if (loggedInUser) {
+                     document.getElementById("getstart").innerHTML = `
+                            <div>
+                                   <h3>پروفایل</h3>
+                                   <p>${loggedInUser.name || loggedInUser.email} جان خوش اومدی!</p>
+                            </div>
+                     `;
+
+                     return;
+              }
+
+              const action = document.querySelector(".signup-action");
+              const forum = document.getElementById("forum");
               if (isLogin) {
-                     this.forumeAction.innerText = "حساب کاربری ندارید؟ برای ساخت حساب کلیک کنید.";
-                     this.forum.innerHTML = this.create_forum_code;
+                     action.setAttribute("id", "signup");
+                     action.innerText = "حساب کاربری ندارید؟ برای ساخت حساب کلیک کنید.";
+                     forum.innerHTML = this.create_forum_code;
+                     return;
               }
 
               else {
-                     this.forumeAction.innerText = "حساب کاربری دارید؟ برای ورود کلیک کنید.";
-                     this.forum.innerHTML = this.login_forum_code;
+                     action.setAttribute("id", "signin");
+                     action.innerText = "حساب کاربری دارید؟ برای ورود کلیک کنید.";
+                     forum.innerHTML = this.login_forum_code;
+                     return;
               }
        }
 
-       toggleForm() {
-              const isLoginMode = this.forumeAction.id === "no_acc";
-              this.forumeAction.id = isLoginMode ? "create_acc" : "no_acc";
+       toggleForm(isLoginMode) {
               this.renderForm(isLoginMode);
        }
 
@@ -116,85 +181,171 @@ class Main {
               `).join('');
        }
 
-       attachProductEvents() {
-              document.querySelector('.products').addEventListener('click', (e) => {
-                     if (e.target.classList.contains('products__item--button')) {
-                            if (!this.loggedInUser) { // نیاز به بررسی لاگین کاربر
-                                   alert('لطفا ابتدا وارد حساب کاربری خود شوید!');
-                                   this.toggleForm(true);
-                                   return;
-                            }
-                            const productName = e.target.id.replace('product-', '');
-                            const product = products.find(p => p.name === productName);
-                            this.addToCart(product);
-                     }
-              });
-       }
-
        addToCart(product) {
               this.cart.push(product);
-              this.updateCartDisplay();
+              this.updateCart();
        }
 
-       updateCartDisplay() {
+       updateCart() {
+              const cartItems = document.querySelector('.cart-items');
+              const totalPrice = document.querySelector('.total-price');
+
+              cartItems.innerHTML = this.cart
+                     .map(item => `
+                            <div class="cart-item">
+                                   <span>${item?.name}</span>
+                                   <span>${item?.price?.toLocaleString()} تومان</span>
+                            </div>
+                     `).join('');
+
               const total = this.cart.reduce((sum, item) => sum + item.price, 0);
-              document.querySelector('.shopping-cart').innerHTML = `
-                <h3>سبد خرید (${this.cart.length} آیتم)</h3>
-                <p>مجموع: ${total.toLocaleString()} تومان</p>
-              `;
+              totalPrice.textContent = `مجموع: ${total.toLocaleString()} تومان`;
        }
 
-       /**
-        * 
-        * @param {number} size 
-        * @returns {string}
-        */
        genCaptcha(size = 5) {
-              // const length = 10 ** size;
-              // const resualt = Math.floor(Math.random() * length);
               let resualt = "";
               for (let i = 0; i < size; i++)
                      resualt += String(Math.floor(Math.random() * 10));
 
               const captcha = String(resualt);
-              this.currentCaptcha = captcha;
               return captcha;
        }
 
-       checkCaptcha(captcha, isLogin = false) {
-              if (captcha !== this.currentCaptcha) {
-                     alert("کد راستی آزمایی وارد شده اشتباه است!");
-                     this.renderForm(isLogin);
+       checkCaptcha(input, captcha, isLogin = false) {
+              console.log(captcha);
+              console.log(captcha !== currentCaptcha);
+              if (captcha !== currentCaptcha) {
+                     // this.toggleForm(isLogin);
+                     this.showError(input, 'کد راستی آزمایی وارد شده اشتباه است!');
                      return false;
               }
+
               return true;
        }
 
+       showSuccess(message) {
+              const successDiv = `<div class="success-message">${message}</div>`;
+
+              const form = document.getElementById('forum');
+              form.innerHTML = successDiv;
+       }
+
+       validateField(input, type) {
+              const value = input.value.trim();
+              const error = input.parentElement.querySelector('.error-message');
+
+              input.classList.remove('input-error');
+              if (error)
+                     error.style.display = 'none';
+
+              if (!value) {
+                     this.showError(input, 'این فیلد الزامی است');
+                     return false;
+              }
+
+              if (type === 'email' && !this.validateEmail(value)) {
+                     this.showError(input, 'فرمت ایمیل نامعتبر است');
+                     return false;
+              }
+
+              if (type === 'password' && value.length < 6) {
+                     this.showError(input, 'رمز عبور باید حداقل 6 کاراکتر باشد');
+                     return false;
+              }
+
+              if (type === 'captcha' && value.length < 5) {
+                     this.showError(input, 'کد راستی آزمایی باید 5 کاراکتر باشد');
+                     return false;
+              }
+
+              return true;
+       }
+
+       validateEmail(email) {
+              const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              return re.test(email);
+       }
+
+       showError(input, message) {
+              const parent = input.parentElement;
+              let error = parent.querySelector('.error-message');
+
+              if (!error) {
+                     error = document.createElement('div');
+                     error.className = 'error-message';
+                     parent.appendChild(error);
+              }
+
+              input.classList.add('input-error');
+              error.textContent = message;
+              error.style.display = 'block';
+       }
+
        login() {
-              const email = document.querySelector('.email').value;
-              const password = document.querySelector('.password').value;
-              const captcha = document.querySelector('.captcha').value;
+              const emailInput = document.querySelector('.email');
+              const passwordInput = document.querySelector('.password');
+              const captchaInput = document.querySelector('.captcha');
 
-              if (!this.checkCaptcha(captcha, true)) return;
+              const isValidEmail = this.validateField(emailInput, 'email');
+              const isValidPass = this.validateField(passwordInput, 'password');
+              const isValidCaptcha = this.validateField(captchaInput, 'captcha');
 
-              // منطق لاگین واقعی اینجا اضافه میشه
-              this.loggedInUser = { email }; // برای تست
-              alert('با موفقیت وارد شدید!');
-              this.toggleForm(true);
+              if (!isValidEmail || !isValidPass || !isValidCaptcha) return;
+
+              if (!this.checkCaptcha(captchaInput, captchaInput.value, true))
+                     return;
+
+              const userData = { email: emailInput.value, password: passwordInput.value };
+              const isLogged = users.find(a => a.email === userData.email);
+              if (isLogged) {
+                     if (userData.password === isLogged.password) {
+                            loggedInUser = userData;
+                            this.showSuccess('با موفقیت وارد شدید!');
+                            this.toggleForm(true);
+                            return
+                     }
+
+                     else {
+                            this.showError(passwordInput, 'گذرواژه صحیح نمیباشد!');
+                            return;
+                     }
+              }
+
+              else {
+                     this.showError(emailInput, 'شما ثبت نام نکرده اید!');
+                     return;
+              }
        }
 
        signup() {
-              const name = document.querySelector('.name').value;
-              const email = document.querySelector('.email').value;
-              const password = document.querySelector('.password').value;
-              const captcha = document.querySelector('.captcha').value;
+              const nameInput = document.querySelector('.name');
+              const emailInput = document.querySelector('.email');
+              const passwordInput = document.querySelector('.password');
+              const captchaInput = document.querySelector('.captcha');
 
-              if (!this.checkCaptcha(captcha)) return;
+              const isValidName = this.validateField(nameInput, 'text');
+              const isValidEmail = this.validateField(emailInput, 'email');
+              const isValidPass = this.validateField(passwordInput, 'password');
+              const isValidCaptcha = this.validateField(captchaInput, 'captcha');
 
-              // منطق ثبت نام واقعی اینجا
-              this.loggedInUser = { name, email }; // برای تست
-              alert('ثبت نام موفق!');
-              this.toggleForm();
+              if (!isValidName || !isValidEmail || !isValidPass || !isValidCaptcha) return;
+
+              if (!this.checkCaptcha(captchaInput, captchaInput.value, false))
+                     return;
+
+              const userData = { name: nameInput.value, email: emailInput.value, password: passwordInput.value };
+              const isLogged = users.some(a => a.email === userData.email);
+              if (isLogged) {
+                     this.showError(emailInput, 'شما قبلا با این ایمیل ثبت نام کرده اید لطفا وارد شوید!');
+                     return;
+              }
+
+              loggedInUser = userData;
+              users.push(userData);
+              this.showSuccess('ثبت نام با موفقیت انجام شد!');
+              this.toggleForm(true);
+
+              return;
        }
 }
 

@@ -2,19 +2,44 @@
 
 @mixin forum {
     .forum-singup {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         direction: ltr;
-        text-align: center;
-        justify-items: center;
+        align-items: center;
 
         .input-row {
             display: flex;
-            margin: 0 0 8px 0;
+            flex-direction: row;
+            margin-bottom: 8px;
+            align-items: center;
+
+            .error-message {
+                color: #dc3545;
+                font-size: 0.875rem;
+                position: absolute;
+                bottom: -1.25rem;
+                right: 0;
+                display: none;
+            }
+
+            .input-error {
+                border-color: #dc3545 !important;
+                box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+            }
+
+            .success-message {
+                color: #28a745;
+                font-size: 0.875rem;
+                margin-top: 0.5rem;
+            }
 
             input {
                 background-color: $forum-input-bg;
                 border: 5px solid $forum-input-bg;
                 border-radius: 3px;
-                inline-size: 190px;
+                max-width: 190px;
+                width: 100%;
                 padding: 2px;
                 height: auto;
                 direction: rtl;
@@ -39,6 +64,7 @@
             }
 
             .single {
+                margin-top: 10px;
                 border-radius: 10px 3px 3px 10px;
             }
 
@@ -54,11 +80,9 @@
                 border-radius: 3px 3px 13px 13px;
                 font-size: 18px;
                 color: $forum-last-input-text;
-                inline-size: 300px;
                 box-shadow: 3px 8px 4px $forum-last-input-text-shadow;
-                height: auto;
                 font-weight: 900;
-                margin: 0 0 10px 0;
+                max-width: 300px;
                 @include default-transition;
 
                 &:hover {
@@ -76,7 +100,6 @@
         }
 
         a {
-            display: block;
             color: $forum-a-color;
             text-decoration: none;
             direction: rtl;
@@ -120,6 +143,10 @@
             &:hover {
                 transform: scale(1.1);
                 box-shadow: none;
+            }
+
+            .products__item--price {
+                color: $product-price;
             }
 
             img {
@@ -166,6 +193,7 @@
     grid-template:
         "logo logo"
         "links-1 links-2";
+
     text-align: center;
     justify-content: center;
     gap: 10px;
