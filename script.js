@@ -187,16 +187,20 @@ class Main {
        }
 
        updateCart() {
+              const shoppingCart = document.querySelector('.shopping-cart');
+              shoppingCart.style.display = "flex";
               const cartItems = document.querySelector('.cart-items');
               const totalPrice = document.querySelector('.total-price');
 
-              cartItems.innerHTML = this.cart
-                     .map(item => `
+              cartItems.innerHTML = `
+                     <h3>لیست خرید</h3>
+                     ${this.cart.map(item => `
                             <div class="cart-item">
                                    <span>${item?.name}</span>
                                    <span>${item?.price?.toLocaleString()} تومان</span>
                             </div>
-                     `).join('');
+                     `).join('')}
+              `;
 
               const total = this.cart.reduce((sum, item) => sum + item.price, 0);
               totalPrice.textContent = `مجموع: ${total.toLocaleString()} تومان`;
@@ -215,7 +219,6 @@ class Main {
               console.log(captcha);
               console.log(captcha !== currentCaptcha);
               if (captcha !== currentCaptcha) {
-                     // this.toggleForm(isLogin);
                      this.showError(input, 'کد راستی آزمایی وارد شده اشتباه است!');
                      return false;
               }

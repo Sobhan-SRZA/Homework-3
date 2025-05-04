@@ -122,7 +122,6 @@ a:hover {
 .container .container-body .container-body__getstart .forum-singup .input-row .error-message {
   color: #dc3545;
   font-size: 0.875rem;
-  position: absolute;
   bottom: -1.25rem;
   right: 0;
   display: none;
@@ -255,6 +254,42 @@ a:hover {
 }
 .container .container-body .container-body__products .products .products__item button:active {
   transform: scale(1.1);
+}
+.container .container-body .container-body__products .shopping-cart {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #2368a8;
+  color: #0f273b;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 1px 2px #000000;
+  transition: all 0.5s ease-in-out;
+}
+.container .container-body .container-body__products .shopping-cart:hover {
+  box-shadow: none;
+}
+.container .container-body .container-body__products .shopping-cart .total-price {
+  color: #baddff;
+  font-weight: 700;
+}
+.container .container-body .container-body__products .shopping-cart .cart-items {
+  color: #baddff;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.container .container-body .container-body__products .shopping-cart .cart-items .cart-item {
+  background-color: #104a71;
+  border-radius: 10px;
+  padding: 1rem;
 }
 .container .container-body .container-body__about p {
   text-align: right;

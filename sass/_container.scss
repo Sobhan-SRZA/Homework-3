@@ -33,8 +33,49 @@
             @include forum;
         }
 
-        .container-body__products{
+        .container-body__products {
             @include products;
+
+            .shopping-cart {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                background-color: $product-bg;
+                color: $h-color;
+                border-radius: 10px;
+                padding: 1rem;
+                box-shadow: 0 1px 2px #000000;
+                @include default-transition;
+
+                &:hover {
+                    box-shadow: none;
+                }
+
+                .total-price {
+                    color: $product-price;
+                    font-weight: 700;
+                }
+
+                .cart-items {
+                    color: $product-price;
+                    display: flex;
+                    flex-direction: row;
+                    text-align: center;
+                    align-items: center;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    gap: 1rem;
+
+                    .cart-item {
+                        background-color: $cart-item-bg;
+                        border-radius: 10px;
+                        padding: 1rem;
+                    }
+                }
+            }
         }
 
         .container-body__about {
